@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="NavigationFlyout.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:NavigationFlyout"
+    Shell.FlyoutBehavior="Flyout"
+    Title="NavigationFlyout">
+    <FlyoutItem Title="Cats" Icon="cat.png">
+        <Tab Title="Options">
+            <ShellContent Title="Kitties" ContentTemplate="{DataTemplate local:CatsPage}" />
+            <ShellContent Title="Doggos" ContentTemplate="{DataTemplate local:DogsPage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Dogs" Icon="dog.png">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate local:DogsPage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Home" Icon="home.png">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+    </FlyoutItem>
+</Shell>
