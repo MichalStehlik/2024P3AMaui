@@ -1,6 +1,4 @@
-﻿using Bumptech.Glide.Util;
-
-namespace Clock
+﻿namespace Clock
 {
     public partial class MainPage : ContentPage
     {
@@ -12,7 +10,8 @@ namespace Clock
 
         private bool OnTimerTick()
         {
-            this.Dispatcher.Dispatch(() => { lblClock.Text = DateTime.Now.ToString("HH:mm:ss"); });
+            lblClock.Text = DateTime.Now.ToString("HH:mm:ss");
+            //this.Dispatcher.Dispatch(() => { lblClock.Text = DateTime.Now.ToString("HH:mm:ss"); });
             return true;
             /*
             Device.BeginInvokeOnMainThread(() =>
