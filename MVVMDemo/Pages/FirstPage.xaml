@@ -2,13 +2,35 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:MVVMDemo.ViewModels"
+             xmlns:conv="clr-namespace:MVVMDemo.Convertors"
              x:Class="MVVMDemo.Pages.FirstPage"
              Title="FirstPage">
+    <ContentPage.Resources>
+        <x:Int16 x:Key="Inc5">5</x:Int16>
+        <conv:EnumToColorConverter x:Key="ECConv" />
+    </ContentPage.Resources>
     <ContentPage.BindingContext>
         <vm:FirstViewModel />
     </ContentPage.BindingContext>
     <VerticalStackLayout>
-        <Label Text="{Binding Text}" />
+        <Label Text="Text" />
         <Entry Text="{Binding Text}" />
+        <Label Text="Velikost" />
+        <Slider Value="{Binding Size}" Minimum="6" Maximum="72" />
+        <HorizontalStackLayout>
+            <Button Text="-" Command="{Binding DecreaseCommand}" />
+            <Label Text="{Binding Size}" WidthRequest="100" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            <Button Text="+" Command="{Binding IncreaseCommand}"/>
+            <Button Text="+5" Command="{Binding IncreaseByValueCommand}" CommandParameter="5" />
+            <Button Text="+10" Command="{Binding IncreaseByValueCommand}" CommandParameter="10" />
+        </HorizontalStackLayout>
+        <Label Text="{Binding Text}" FontSize="{Binding Size}" TextColor="{Binding Color, Converter={StaticResource ECConv}}"/>
+        <Label Text="{Binding Color}" />
+        <HorizontalStackLayout>
+            <Button Text="Black" Command="{Binding ChangeColorCommand}" CommandParameter="Black" />
+            <Button Text="Red" Command="{Binding ChangeColorCommand}" CommandParameter="Red" />
+            <Button Text="Green" Command="{Binding ChangeColorCommand}" CommandParameter="Green" />
+            <Button Text="Blue" Command="{Binding ChangeColorCommand}" CommandParameter="Blue" />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
