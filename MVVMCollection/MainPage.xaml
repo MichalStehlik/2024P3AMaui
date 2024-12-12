@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MVVMCollection.ViewModels"
+             x:Class="MVVMCollection.MainPage">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <ListView ItemsSource="{Binding Students}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <HorizontalStackLayout VerticalOptions="CenterAndExpand">
+                                <Label Text="{Binding Firstname}" Margin="3"/>
+                                <Label Text="{Binding Lastname}" Margin="3"/>
+                                <Label Text="{Binding Age}" Margin="3"/>
+                                <Button Text="+" />
+                            </HorizontalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Add" Command="{Binding AddStudentCommand}" />
+            <Button Text="Year+" Command="{Binding AddYearToAllStudentsCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
