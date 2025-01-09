@@ -59,7 +59,7 @@ namespace LocalDb.ViewModels
             AddCommand = new Command(
                 async () =>
                 {
-                    await StoreItemAsync(new ShoppingItem { Name = NewName });
+                    await StoreItemAsync(new ShoppingItem { Name = SelectedItem.Name });
                     //Items.Add(new ShoppingItem { Name = NewName});
                     await LoadItems();
                 },
@@ -106,14 +106,12 @@ namespace LocalDb.ViewModels
 
         private async Task LoadItems()
         {
-            /*
             var items = await _database.GetItemsAsync();
             Items.Clear();
             foreach (var item in items)
             {
                 Items.Add(item);
             }
-            */
         }
 
         public async Task<int> StoreItemAsync(ShoppingItem item)
